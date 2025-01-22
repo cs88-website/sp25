@@ -5,7 +5,7 @@
         "lab00.py"
     ],
     "tests": {
-        "lab*.py": "doctest",
+        "lab00.py": "doctest",
         "tests/*.py": "ok_test"
     },
     "default_tests": [

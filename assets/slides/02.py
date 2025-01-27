@@ -17,7 +17,7 @@ def ex():
     >>> def g(y):
     ...     x = 2 * y
     ...     return x + 1
-    ... 
+    ...
     >>> x = 2
     >>> g(x)
     5
@@ -51,7 +51,7 @@ def diff(x, y):
     >>> def diff(x, y):
     ...     x, y = y, x
     ...     return y - x
-    
+
     >>> x, y = 6, 1
     >>> x, y = y, x-y
     >>> diff(y, x)
@@ -59,13 +59,13 @@ def diff(x, y):
     """
     x, y = y, x
     return y - x
-    
+
 # https://pythontutor.com/cp/composingprograms.html#code=def%20diff%28x,%20y%29%3A%0A%20%20%20%20x,%20y%20%3D%20y,%20x%0A%20%20%20%20return%20y%20-%20x%0A%20%20%20%20%0Ax,%20y%20%3D%206,%201%0Ax,%20y%20%3D%20y,%20x-y%0Aprint%28diff%28y,%20x%29%29&cumulative=true&curInstr=0&mode=display&origin=composingprograms.js&py=3&rawInputLstJSON=%5B%5D
 
 # Print and None
 
 def triple(x):
-    return x # versus print(x)
+    return x * 3 #` ` versus print(x)
 
 def noisy(x):
     """

@@ -243,24 +243,29 @@ popular text editors (but don't use these ... just use VS Code):</p>
 
 
 <p>Your terminal is always open in some folder, which is called the "working directory."
-The name of the working directory is visible before the <code>$</code> in the terminal.</p>
+The name of the working directory is visible before the terminal prompt, a character
+that tells you that the terminal is ready to accept inputs. The prompt is usually
+<code>%</code> or <code>$</code> if you are on a Mac/Unix system.</p>
+
+<blockquote><p>Don't worry if your terminal window doesn't look exactly the same.
+The important part is that the prompt shows <code>$</code> (indicating Bash) or <code>%</code>
+(indicating zsh).</p></blockquote>
 
 
 <h4 id="home-directory">Home Directory</h4>
+
 
 <p>When you first open your terminal, you will start in the "home directory".
 In other words, the home directory is the default working directory.
 The <strong>home directory</strong> is represented by the <code>~</code> symbol, which you might see
 at the prompt.</p>
 
-<blockquote><p>Don't worry if your terminal window doesn't look exactly the same.
-The important part is that the prompt shows <code>$</code> (indicating Bash) or <code>%</code>
-(indicating zsh).</p></blockquote>
-
 <p>Try running <code>echo &quot;$HOME&quot;</code>. That command should display the full path to your home directory.
 It should look something like this:</p>
 
 <p><code>/Users/OskiBear</code></p>
+
+<p>where <code>OskiBear</code> would be replaced by your username.</p>
 
 
 <h4 id="path">Path</h4>
@@ -320,7 +325,7 @@ here's how my lab folder looks in my GUI:</p>
 
 <p>In this section, you will learn how to manage files using terminal commands.</p>
 
-<blockquote><p>Make sure your prompt contains a <code>$</code> somewhere in it and does not begin with
+<blockquote><p>Make sure your prompt contains a <code>$</code> or <code>%</code> somewhere in it and does not begin with
 <code>&gt;&gt;&gt;</code>. If it begins with <code>&gt;&gt;&gt;</code> you are still in a Python shell, and you need
 to exit. See above for how.</p></blockquote>
 
@@ -358,30 +363,30 @@ the terminal the path where you want to go.</p>
 <p><strong>Making New Directories</strong></p>
 
 <p>The next command is called <code>mkdir</code>, which <strong>m</strong>a<strong>k</strong>es a new
-<strong>dir</strong>ectory. Let's make a directory called <code>cs61a</code> in your <code>Desktop</code> directory to
+<strong>dir</strong>ectory. Let's make a directory called <code>c88c</code> in your <code>Desktop</code> directory to
 store all of the assignments for this class:</p>
 
-<pre><code>mkdir cs61a</code></pre>
+<pre><code>mkdir c88c</code></pre>
 
-<p>A folder named <code>cs61a</code> will appear on your Desktop. You can verify this by
+<p>A folder named <code>c88c</code> will appear on your Desktop. You can verify this by
 using the <code>ls</code> command again or by checking your Desktop using Finder (Mac).</p>
 
 <p>At this point, let's create some more directories. First, make sure you are in
-the <code>cs61a</code> directory (<code>~/Desktop/cs61a</code>).
-Then, create two new folders, one called <code>projects</code> and the other called <code>lab</code>. Both
-should be inside of your <code>cs61a</code> folder:</p>
+the <code>c88c</code> directory (<code>~/Desktop/c88c</code>).
+Then, create three new folders called <code>projects</code>, <code>lab</code>, and <code>hw</code>. All of them
+should be inside of your <code>c88c</code> folder:</p>
 
-<pre><code>cd ~/Desktop/cs61a
+<pre><code>cd ~/Desktop/c88c
 mkdir projects
-mkdir lab</code></pre>
+mkdir lab
+mkdir hw</code></pre>
 
-<p>Now if you list the contents of the directory (using <code>ls</code>), you'll see two
-folders, <code>projects</code> and <code>lab</code>.</p>
+<p>Now if you list the contents of the directory (using <code>ls</code>), you'll see three
+folders, <code>projects</code>, <code>lab</code>, and <code>hw</code>.</p>
 
-<p><img class="img-responsive center-block" src="assets/terminal_commands.png" alt="cs61a directory" width="" height=""></p>
+<p><strong>More Directory Changing</strong></p>
 
-<p><strong>More Directory Changing</strong>
-There are a few ways to return to the home directory:</p>
+<p>There are a few ways to return to the home directory:</p>
 
 <ul>
   <li><code>cd ..</code> (two dots). The <code>..</code> means "the parent directory", or one directory above your current directory.</li>
@@ -398,7 +403,7 @@ easiest and most convenient for you!</p></blockquote>
 <h4 id="downloading-the-assignment">Downloading the Assignment</h4>
 
 
-<p>If you haven't already, download the zip archive, <a href="/lab/lab00/lab00.zip">lab00.zip</a>, which
+<p>If you haven't already, download the zip archive, <a href="/sp25/lab/lab00/lab00.zip">lab00.zip</a>, which
 contains all the files that you'll need for this lab. Once you've done that, let's
 find the downloaded file. On most computers, <code>lab00.zip</code> is probably located in a
 directory called <code>Downloads</code> in your home directory. Use the <code>ls</code> command to
@@ -445,17 +450,17 @@ contains the following files (check it out with <code>cd lab00</code> and <code>
 
 <p>Move the lab files to the lab folder you created earlier:</p>
 
-<pre><code>mv ~/Downloads/lab00 ~/Desktop/cs61a/lab</code></pre>
+<pre><code>mv ~/Downloads/lab00 ~/Desktop/c88c/lab</code></pre>
 
 <p>The <code>mv</code> command will <strong>m</strong>o<strong>v</strong>e the <code>~/Downloads/lab00</code> folder
-into the <code>~/Desktop/cs61a/lab</code> folder. If you prefer, you can also move the file
+into the <code>~/Desktop/c88c/lab</code> folder. If you prefer, you can also move the file
 by dragging and dropping it into the correct folder in your graphic file
 explorer, which is probably more familar and will have exactly the same result.</p>
 
 <p>Now, go to the <code>lab00</code> folder that you just moved. Try using <code>cd</code> to navigate
 your own way! If you get stuck, you can use the following command:</p>
 
-<pre><code>cd ~/Desktop/cs61a/lab/lab00</code></pre>
+<pre><code>cd ~/Desktop/c88c/lab/lab00</code></pre>
 
 
 <h4 id="summary">Summary</h4>

@@ -231,6 +231,20 @@ in your terminal.</p>
 <pre><code>python3 &#x2d;c &quot;import struct,platform;print(8 * struct.calcsize(&#x27;P&#x27;), platform.python_version())&quot;</code></pre>
 
 
+<h4 id="crashed-with-error-like-modulenotfound-urllib3-not-found">Crashed with error like <code>ModuleNotFound ... urllib3 not found</code></h4>
+
+
+<p>Try installing any version of Python between 3.8 and 3.11 (inclusive), and uninstalling Python 3.12.</p>
+
+<p>We recommend installing <a href="https://www.python.org/downloads/release/python-3119/">Python 3.11.9</a>. Scroll down to the Files section and <strong>download the installer</strong> for your operating system (Mac/Windows), <strong>do not download the tarball files</strong>.</p>
+
+
+<h4 id="crashed-with-error-like-permissionerror-errno-13-permission-denied-x27-users-lt-user_name-gt-config-ok">Crashed with error like <code>PermissionError: [Errno 13] Permission denied: &#x27;/Users/&lt;user_name&gt;/.config/ok</code></h4>
+
+
+<p>Try running <code>sudo chmod &#x2d;R ugo+rwx /Users/&lt;user_name&gt;/.config</code> where <code>&lt;user_name&gt;</code> is replaced with your username, and then retry the OkPy command.</p>
+
+
 <h2 id="testing-with-ok">Testing with Ok</h2>
 
 
@@ -332,6 +346,8 @@ sign in with the same bCourses email that you authenticated with.</p>
       <li><a href="#wrong-email">Wrong email</a></li>
       <li><a href="#can-t-authenticate-browser-issues-redirections-to-127-0-0-1-etc">Can't authenticate/browser issues/redirections to <code>127.0.0.1</code>/etc.</a></li>
       <li><a href="#crashed-or-did-not-load">Crashed or did not load</a></li>
+      <li><a href="#crashed-with-error-like-modulenotfound-urllib3-not-found">Crashed with error like <code>ModuleNotFound ... urllib3 not found</code></a></li>
+      <li><a href="#crashed-with-error-like-permissionerror-errno-13-permission-denied-x27-users-lt-user_name-gt-config-ok">Crashed with error like <code>PermissionError: [Errno 13] Permission denied: &#x27;/Users/&lt;user_name&gt;/.config/ok</code></a></li>
     </ul>
   </ul>
   <li><a href="#testing-with-ok">Testing with Ok</a></li>

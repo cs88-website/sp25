@@ -33,11 +33,11 @@
 
     
 
-<link rel="stylesheet" type="text/css" href="/assets/css/hw.css">
+<link rel="stylesheet" type="text/css" href="/assets/css/disc.css">
 
 
     <title>
-Homework 8 | Data C88C Spring 2025
+Discussion 1 | Data C88C Spring 2025
 </title>
   </head>
 
@@ -60,13 +60,13 @@ Homework 8 | Data C88C Spring 2025
           <ul class="nav navbar-nav navbar-right">
 
             
-            <li><a href="/sp25/">Lectures</a></li>
+            <li><a href="/sp25/">Schedule</a></li>
             
             <li><a href="/sp25/articles/about-c88c/">Syllabus</a></li>
             
-            <li><a href="https://edstem.org/us/courses/63975/discussion/">Ed</a></li>
+            <li><a href="https://edstem.org/us/courses/74610/discussion/">Ed</a></li>
             
-            <li><a href="/sp25/office-hours/">Office Hours</a></li>
+            <li><a href="/sp25/office-hours/">Google Calendar</a></li>
             
             <li><a href="/sp25/articles/contact-c88c/">Contact</a></li>
             
@@ -79,9 +79,9 @@ Homework 8 | Data C88C Spring 2025
               </a>
               <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                 
-                <li><a href="https://go.c88c.org/extensions">Request an Extension</a></li>
+                <li><a href="https://go.c88c.org/coming-soon">Request an Extension</a></li>
                 
-                <li><a href="https://go.c88c.org/regrades">Request a Regrade</a></li>
+                <li><a href="https://go.c88c.org/coming-soon">Request a Regrade</a></li>
                 
                 <li><a href="https://oh.c88c.org/">Office Hours Queue</a></li>
                 
@@ -145,12 +145,12 @@ Homework 8 | Data C88C Spring 2025
     <header>
       <h1>
         
-Homework 8: Linked Lists
+Discussion 1: Functions
 
         
         
         <ul class="inline-block list-inline">
-          <li><a href="hw08.zip" class="label label-outline">hw08.zip</a></li>
+          <li><a href="disc01.pdf" class="label label-outline">disc01.pdf</a></li>
         </ul>
         
         
@@ -158,178 +158,146 @@ Homework 8: Linked Lists
     </header>
     
 
-<p><em>Due by 11:59pm on Monday, November 4</em></p>
-
-
-
-
-
-<h2>Instructions</h2>
-
-<p>Download <a href="hw08.zip">hw08.zip</a>. Inside the archive, you will find a file called
-<a href="hw08.py">hw08.py</a>, along with a copy of the <code>ok</code> autograder.</p>
-
-<p><strong>Submission:</strong> When you are done, submit the assignment by uploading all code files you've edited to Gradescope. You may submit more than once before the deadline; only the
-final submission will be scored. Check that you have successfully submitted
-your code on Gradescope.  See <a
-  href="../../lab/lab00#task-c-submitting-the-assignment">Lab 0</a> for more instructions on
-submitting assignments.</p>
-
-<p><strong>Using Ok:</strong> If you have any questions about using Ok, please
-refer to <a href="../../articles/using-ok">this guide.</a>
-
-
-
-<p><strong>Grading:</strong> Homework is graded based on
-correctness. Each incorrect problem will decrease the total score by one point.
-<strong>This homework is out of 2 points.</strong>
-
-
+<!-- <div class="alert storable-login-status"></div> -->
 
 
     
-<h1 id="required-questions">Required Questions</h1>
+<h1 id="functions">Functions</h1>
 
 
-<br>
+<p>Functions (such as <code>pow</code>) are called using <em>call expressions</em> (such as <code>pow(10, 3)</code> which returns 1000; 10 to the third power). The body of a function can <code>print</code> or <code>return</code> values (or both).</p>
+
+<ul>
+  <li>When <code>print</code> is called anywhere, its arguments are displayed right away.</li>
+  <li>Executing a return statement stops the function call and provides the value for its call expression.</li>
+  <li>When the end of a function body is reached without a <code>return</code>, the function
+  returns <code>None</code>.</li>
+</ul>
+
+<p><strong>Tip:</strong> If a value needs to be used by code outside of a function, then return the value (instead of printing it).</p>
+
+
+<h3 id="q1-multiply">Q1: Multiply</h3>
+
+
+<p>Implement <code>multiply</code>, which takes two numbers <code>x</code> and <code>y</code>. It prints out an
+equation showing the result of multiplying x and y, then returns the result.</p>
+
+<p>Try to multiply numbers together just once in the body of <code>multiply</code> so that the
+Python interpreter doesn't have to perform multiplication more <em>times</em> than
+necessary (pun intended).</p>
+
+
+            <div class="monaco-storable" id="multiply-input" style="height:270px;"></div>
+            <a href="javascript:void" id="modal-link-multiply-input">Run in 61A Code</a>
+            <div class="modal fade" id="modal-multiply-input" tabindex="-1" role="dialog">
+                <div class="modal-dialog modal-lg" role="document">
+                    <div class="modal-content" style="padding-bottom: -5px">
+                    <iframe
+                        id="code-iframe-multiply-input"
+                        width="100%"
+                        height="700px"
+                        style="border: none; display:block;"
+                    ></iframe>
+                    </div>
+                </div>
+            </div>
+            <div class="storable-status"></div>
+            <script>
+                $(() => activateEditor('def multiply(x, y):\n    &quot;&quot;&quot;Multiply x by y and print what happened.\n\n    &gt;&gt;&gt; multiply(3, multiply(multiply(4, 5), 6))\n    4 * 5 = 20\n    20 * 6 = 120\n    3 * 120 = 360\n    360\n    &quot;&quot;&quot;\n    "*** YOUR CODE HERE ***"\n\n', "python", "multiply-input"));
+            </script>
+        
+
 
         <button id='toggle-1' class='btn btn-outline btn-lg alwaystoggle toggle'>
-        Getting Started Videos<noscript> (enable JavaScript)</noscript>
+        Hint: Printing an equation<noscript> (enable JavaScript)</noscript>
         </button>
         <div class="solution toggle-1">
-
-<h2 id="getting-started-videos" class="no-toc">Getting Started Videos</h2>
-
-
-<p>These videos may provide some helpful direction for tackling the coding
-problems on this assignment.</p>
-
-<blockquote><p>To see these videos, you should be logged into your berkeley.edu email.</p></blockquote>
-
-
-            <iframe width="560" height="315" src="https://youtube.com/embed/videoseries?list=PLx38hZJ5RLZfHlzLYIGkMtnR1ZcrWC1VW"
-                frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" aria-label = "c88c-hw8-getstarted"
-                allowfullscreen></iframe><p><a href='https://youtu.be/playlist?list=PLx38hZJ5RLZfHlzLYIGkMtnR1ZcrWC1VW'> YouTube link </a></p>
+Calling <code>print</code> on multiple arguments displays those values separated by spaces.
+For example, the call expression <code>print(1, &#x27;+&#x27;, 2, &#x27;=&#x27;, 3)</code> displays <code>1 + 2 = 3</code>.
 </div>
 
 
-<h2 id="linked-lists">Linked Lists</h2>
+<h1 id="digits">Digits</h1>
 
 
-<h3 id="q1-store-digits">Q1: Store Digits</h3>
+<p>Each digit of a positive integer corresponds to a power of 10. Here are some
+examples of manipulating digits, illustrated with <code>n = 357</code> and <code>d = 9</code>.</p>
+
+<ul>
+  <li>Remove the last digit of <code>n</code>: <code>n // 10</code> is 35.</li>
+  <li>Remove the last two digits of <code>n</code>: <code>n // pow(10, 2)</code> is 3.</li>
+  <li>Add together the last two digits of <code>n</code>: <code>n % 10</code> + <code>n // 10 % 10</code> is 12.</li>
+  <li>Put digit <code>d</code> at the end of integer <code>n</code>: <code>n * 10 + d</code> is 3579.</li>
+</ul>
 
 
-<p>Write a function <code>store_digits</code> that takes in an integer <code>n</code> and returns
-a linked list containing the digits of <code>n</code> in the same order (from left to right).</p>
-
-<blockquote><p><strong>Important</strong>: Do not use any string manipulation functions, such as <code>str</code> or <code>reversed</code>.</p></blockquote>
-
-<solution>
-
-<pre><code>def store_digits(n):
-    &quot;&quot;&quot;Stores the digits of a positive number n in a linked list.
-
-    &gt;&gt;&gt; s = store_digits(1)
-    &gt;&gt;&gt; s
-    Link(1)
-    &gt;&gt;&gt; store_digits(2345)
-    Link(2, Link(3, Link(4, Link(5))))
-    &gt;&gt;&gt; store_digits(876)
-    Link(8, Link(7, Link(6)))
-    &gt;&gt;&gt; store_digits(2450)
-    Link(2, Link(4, Link(5, Link(0))))
-    &gt;&gt;&gt; store_digits(20105)
-    Link(2, Link(0, Link(1, Link(0, Link(5)))))
-    &gt;&gt;&gt; # a check for restricted functions
-    &gt;&gt;&gt; import inspect, re
-    &gt;&gt;&gt; cleaned = re.sub(r&quot;#.*\\n&quot;, &#x27;&#x27;, re.sub(r&#x27;&quot;{3}[\s\S]*?&quot;{3}&#x27;, &#x27;&#x27;, inspect.getsource(store_digits)))
-    &gt;&gt;&gt; print(&quot;Do not use str or reversed!&quot;) if any([r in cleaned for r in [&quot;str&quot;, &quot;reversed&quot;]]) else None
-    &quot;&quot;&quot;
-    "*** YOUR CODE HERE ***"
-</code></pre>
-
-</solution>
-
-<p>Use Ok to test your code:</p><pre style="margin-bottom:0;"><code class="nohighlight">python3 ok -q store_digits<button id="copy-code-python3ok-qstore_digits" class="inline-copy-button"><div class="copy-tooltip"><span>Copy</span></div>✂️</a></code></pre>
-        <script>
-        document.getElementById("copy-code-python3ok-qstore_digits").onclick = () => copyCode('python3 ok -q store_digits', "copy-code-python3ok-qstore_digits");
-        </script>
-        <br/>
+<h3 id="q2-cut-one-out">Q2: Cut One Out</h3>
 
 
-<h3 id="q2-mutable-mapping">Q2: Mutable Mapping</h3>
+<p>Implement <code>cut</code>, which takes non-negative integers <code>n</code> and <code>k</code> and has only a
+return statement in its body. It returns a positive integer with all of the
+digits of <code>n</code> except the digit that is <code>k</code> to the left of the rightmost digit
+(the one's digit). If <code>k</code> is 0, then it returns <code>n</code> without its one's digit.
+If there is no digit <code>k</code> to the right of the one's digit, then it returns <code>n</code>.</p>
 
 
-<p>Implement <code>deep_map_mut(func, s)</code>, which applies the function <code>func</code> to each
-element in the linked list <code>s</code>. If an element is itself a linked list,
-recursively apply <code>func</code> to its elements as well.</p>
+            <div class="monaco-storable" id="cut-input" style="height:288px;"></div>
+            <a href="javascript:void" id="modal-link-cut-input">Run in 61A Code</a>
+            <div class="modal fade" id="modal-cut-input" tabindex="-1" role="dialog">
+                <div class="modal-dialog modal-lg" role="document">
+                    <div class="modal-content" style="padding-bottom: -5px">
+                    <iframe
+                        id="code-iframe-cut-input"
+                        width="100%"
+                        height="700px"
+                        style="border: none; display:block;"
+                    ></iframe>
+                    </div>
+                </div>
+            </div>
+            <div class="storable-status"></div>
+            <script>
+                $(() => activateEditor('def cut(n, k):\n    &quot;&quot;&quot;Return n with the kth digit from the right removed.\n\n    &gt;&gt;&gt; cut(3579, 2)\n    379\n    &gt;&gt;&gt; cut(3579, 0)\n    357\n    &gt;&gt;&gt; cut(3579, 1)\n    359\n    &gt;&gt;&gt; cut(3579, 5)\n    3579\n    &quot;&quot;&quot;\n    return ____\n\n', "python", "cut-input"));
+            </script>
+        
 
-<p>Your implementation should <em>mutate</em> the original linked list. <strong>Do not
-create any new linked lists.</strong> The function returns <code>None</code>.</p>
-
-<blockquote><p><strong>Hint</strong>: You can use the built-in <code>isinstance</code> function to determine if an element is a linked list.</p>
-
-<pre><code>&gt;&gt;&gt; s = Link(1, Link(2, Link(3, Link(4))))
-&gt;&gt;&gt; isinstance(s, Link)
-True
-&gt;&gt;&gt; isinstance(s, int)
-False</code></pre></blockquote>
-
-<!-- separator for the indent blocks -->
-
-<blockquote><p><strong>Construct Check</strong>: The final test case for this problem checks
-that your function does not create any new linked lists.
-If you are failing this doctest, make sure that you are not
-creating link lists by calling the constructor, i.e.</p>
-
-<pre><code>s = Link(1)</code></pre></blockquote>
-
-<solution>
-
-<pre><code>def deep_map_mut(func, s):
-    &quot;&quot;&quot;Mutates a deep link s by replacing each item found with the
-    result of calling func on the item. Does NOT create new Links (so
-    no use of Link&#x27;s constructor).
-
-    Does not return the modified Link object.
-
-    &gt;&gt;&gt; link1 = Link(3, Link(Link(4), Link(5, Link(6))))
-    &gt;&gt;&gt; print(link1)
-    &lt;3 &lt;4&gt; 5 6&gt;
-    &gt;&gt;&gt; # Disallow the use of making new Links before calling deep_map_mut
-    &gt;&gt;&gt; Link.__init__, hold = lambda *args: print(&quot;Do not create any new Links.&quot;), Link.__init__
-    &gt;&gt;&gt; try:
-    ...     deep_map_mut(lambda x: x * x, link1)
-    ... finally:
-    ...     Link.__init__ = hold
-    &gt;&gt;&gt; print(link1)
-    &lt;9 &lt;16&gt; 25 36&gt;
-    &quot;&quot;&quot;
-    "*** YOUR CODE HERE ***"
-</code></pre>
-
-</solution>
-
-<p>Use Ok to test your code:</p><pre style="margin-bottom:0;"><code class="nohighlight">python3 ok -q deep_map_mut<button id="copy-code-python3ok-qdeep_map_mut" class="inline-copy-button"><div class="copy-tooltip"><span>Copy</span></div>✂️</a></code></pre>
-        <script>
-        document.getElementById("copy-code-python3ok-qdeep_map_mut").onclick = () => copyCode('python3 ok -q deep_map_mut', "copy-code-python3ok-qdeep_map_mut");
-        </script>
-        <br/>
+<p>Please don't look at the hint until everyone in your group agrees that you're stuck and
+need some extra help.</p>
 
 
-<h2 id="check-your-score-locally">Check Your Score Locally</h2>
+        <button id='toggle-2' class='btn btn-outline btn-lg alwaystoggle toggle'>
+        Hint<noscript> (enable JavaScript)</noscript>
+        </button>
+        <div class="solution toggle-2">
 
-<p>You can locally check your score on each question of this assignment by running</p>
+<p>To implement a function, it can be helpful to open a Python interpreter and
+focus on an example. Here are all the pieces you need to put together to solve
+this problem for the example <code>n=3579</code> and <code>k=2</code>.</p>
 
-<pre><code>python3 ok &#x2d;&#x2d;score</code></pre>
+<pre><code>&gt;&gt;&gt; n = 3579
+&gt;&gt;&gt; k = 2
+&gt;&gt;&gt; pow(10, k)
+100
+&gt;&gt;&gt; pow(10, k + 1)
+1000
+&gt;&gt;&gt; n // 1000
+3
+&gt;&gt;&gt; 3 * 100
+300
+&gt;&gt;&gt; 3579 % 100
+79
+&gt;&gt;&gt; 300 + 79
+379</code></pre>
 
-<p><strong>This does NOT submit the assignment!</strong> When you are satisfied with your score, submit the assignment to Gradescope to receive credit for it.</p>
 
-<h1 id="submit-assignment">Submit Assignment</h1>
+</div>
 
 
-<p>Submit this assignment by uploading any files you've edited <strong>to the appropriate Gradescope assignment.</strong> <a href="../../lab/lab00/#submit-with-gradescope">Lab 00</a> has detailed instructions.</p>
+<h1 id="attendance">Attendance</h1>
 
+
+<p>Please all fill out the <a href="https://go.c88c.org/here">attendance form</a> (one submission per person per week). Then, you can work on Lab 0 and Lab 1. It's usually best to work on lab assignments in pairs, but you can form larger groups if that is helpful.</p>
 <script>
     $('.alwaystoggle').css('display', 'inline-block');
     $('.alwaystoggle').click(function() {
@@ -338,23 +306,20 @@ creating link lists by calling the constructor, i.e.</p>
     });
 </script>
 
-
   </div>
 
   <div class='col-md-3 sticky'>
     <nav class='hidden-print hidden-sm hidden-xs sidebar'>
       <ul>
-  <li><a href="#instructions">Instructions</a></li>
-  <li><a href="#required-questions">Required Questions</a></li>
+  <li><a href="#functions">Functions</a></li>
   <ul>
-    <li><a href="#linked-lists">Linked Lists</a></li>
-    <ul>
-      <li><a href="#q1-store-digits">Q1: Store Digits</a></li>
-      <li><a href="#q2-mutable-mapping">Q2: Mutable Mapping</a></li>
-    </ul>
-    <li><a href="#check-your-score-locally">Check Your Score Locally</a></li>
+    <li><a href="#q1-multiply">Q1: Multiply</a></li>
   </ul>
-  <li><a href="#submit-assignment">Submit Assignment</a></li>
+  <li><a href="#digits">Digits</a></li>
+  <ul>
+    <li><a href="#q2-cut-one-out">Q2: Cut One Out</a></li>
+  </ul>
+  <li><a href="#attendance">Attendance</a></li>
 </ul>
     </nav>
   </div>

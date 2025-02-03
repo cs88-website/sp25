@@ -74,8 +74,7 @@ def cube(x):
 def identity(x):
     return x
 
-# def summation(n, term):
-def summation(x, term):
+def summation(n, term):
     """
     >>> summation(5, cube)
     225

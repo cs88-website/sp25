@@ -9,7 +9,7 @@
         "tests/*.py": "ok_test"
     },
     "default_tests": [
-        "largest_factor",
+        "divisible_by_k",
         "hailstone"
     ],
     "protocols": [

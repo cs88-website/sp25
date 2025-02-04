@@ -1,12 +1,22 @@
-def largest_factor(n):
-    """Return the largest factor of n that is smaller than n.
-
-    >>> largest_factor(15) # factors are 1, 3, 5
+def divisible_by_k(n, k):
+    """
+    >>> a = divisible_by_k(10, 2)  # 2, 4, 6, 8, and 10 are divisible by 2
+    2
+    4
+    6
+    8
+    10
+    >>> a
     5
-    >>> largest_factor(80) # factors are 1, 2, 4, 5, 8, 10, 16, 20, 40
-    40
-    >>> largest_factor(13) # factor is 1 since 13 is prime
+    >>> b = divisible_by_k(3, 1)  # 1, 2, and 3 are divisible by 1
     1
+    2
+    3
+    >>> b
+    3
+    >>> c = divisible_by_k(6, 7)  # There are no integers up to 6 that are divisible by 7
+    >>> c
+    0
     """
     "*** YOUR CODE HERE ***"
 

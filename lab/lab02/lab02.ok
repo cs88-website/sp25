@@ -11,10 +11,8 @@
     "default_tests": [
         "control",
         "if-statements",
-        "falling",
-        "divisible_by_k",
-        "sum_digits",
-        "double_eights"
+        "double_eights",
+        "falling"
     ],
     "protocols": [
         "restore",

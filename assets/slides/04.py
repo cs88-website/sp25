@@ -118,9 +118,12 @@ def intelligent_strategy(current_score):
     """
     if current_score < 18:
         return three_strat
+    if current_score == 18:
+        return two_strat
+    if current_score == 19:
+        return one_strat
     else:
         return two_strat
-    return 0
 
 # Local function definitions; returning functions
 

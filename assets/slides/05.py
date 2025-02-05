@@ -37,6 +37,7 @@ def summation(x, term):
 
 # Functional return values
 
+make_adder_2 = lambda n: lambda k: k+n
 def make_adder(n):
     """Return a function that takes one argument k and returns k + n.
 

@@ -81,19 +81,19 @@ square = curry(reverse(pow))(2)
 
 # Env Diagram
 
-def f(x):
-    """f(x)(t) returns max(x*x, 3*x)
-    if t(x) > 0, and 0 otherwise.
-    """
-    y = max(x * x, 3 * x)
-    def zero(t):
-        if t(x) > 0:
-            return y
-        return 0
-    return zero
+# def f(x):
+#     """f(x)(t) returns max(x*x, 3*x)
+#     if t(x) > 0, and 0 otherwise.
+#     """
+#     y = max(x * x, 3 * x)
+#     def zero(t):
+#         if t(x) > 0:
+#             return y
+#         return 0
+#     return zero
 
-y = 1
-while y < 10:
-    if f(y)(lambda z: z - y + 10):
-        max = y
-    y = y + 1
+# y = 1
+# while y < 10:
+#     if f(y)(lambda z: z - y + 10):
+#         max = y
+#     y = y + 1

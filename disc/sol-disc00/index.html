@@ -33,10 +33,12 @@
 
     
 
-<link rel="stylesheet" type="text/css" href="/sp25/assets/css/lecture.css">
+<link rel="stylesheet" type="text/css" href="/assets/css/disc.css">
 
 
-    <title>Data C88C Spring 2025</title>
+    <title>
+Discussion 0 | Data C88C Spring 2025
+</title>
   </head>
 
   <body id="index" class="home">
@@ -144,25 +146,86 @@
   <div class='col-md-9'>
     <header>
       <h1>
-        Welcome
+        
+Discussion 0: Getting Started
+
+        
+        
+        <ul class="inline-block list-inline">
+          <li><a href="disc00.pdf" class="label label-outline">disc00.pdf</a></li>
+        </ul>
+        
+        
       </h1>
-      <p>
-        Topics covered: <a href="/resources#getting-started" target="_blank">Getting Started</a> 
-      </p>
     </header>
+    
 
-    <h2 id="prerecorded"><a href="#playlist">Lecture Playlist</a></h2>
-    <iframe width="886" height="498" src="" title="Lecture playlist" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<!-- <div class="alert storable-login-status"></div> -->
 
-    <ul class="inline-block list-inline title-tags">
-      
-          <a href="https://kaltura.berkeley.edu/media/COMPSCI+C88C%2C+LEC+001+%7C+DATA+C88C%2C+LEC+001+%28Spring+2025%29/1_iq1b2lu7/368970932" class="label label-outline" target="_blank">Recording</a>
-      
-          <a href="https://edstem.org/us/courses/74610/discussion/6011119?chrome=0" class="label label-outline" target="_blank">Q&A</a>
-      
-          <a href="/assets/slides/01-Welcome_1pp.pdf" class="label label-outline" target="_blank">Slides (1pp)</a>
-      
-    </ul>
+
+    
+<p>Welcome to DATA C88C! This first discussion will just include icebreakers to get to know each other, but future discussions will be an opportunity for you to practice course content.</p>
+
+
+<h2 id="part-0-introductions-5-minutes">Part 0: Introductions [5 minutes]</h2>
+
+
+<p>Introduce yourself to the class! Tell us your:</p>
+
+<ol>
+  <li>Name</li>
+  <li>Year</li>
+  <li>Major</li>
+  <li>Where you're from</li>
+  <li>Something you're passionate about or a hobby of yours</li>
+</ol>
+
+
+<h2 id="part-1-counting-10-minutes">Part 1: Counting [10 minutes]</h2>
+
+
+<p>Let's try to count from 1 to 30 as a class. Here are the rules:</p>
+
+<ol>
+  <li>Each person will count off no more than once.</li>
+  <li>The order in which people count off must be random (e.g. you can't just go in order by seating positions).</li>
+  <li>If more than one person says a number at the same time, you have to restart at 1. For example, if Alice says "twenty" and Bob says "twenty" at the same time, you have to start over!</li>
+  <li>If you do not go in strictly increasing and consecutive order, you have to restart at 1. For example, if Alice says "one," Bob says "two", and then Charlie says "four," you have to restart at 1.</li>
+</ol>
+
+<p>How quickly can you get to 30 without breaking the rules?</p>
+
+
+<h2 id="part-2-light-switches-10-minutes">Part 2: Light switches [10 minutes]</h2>
+
+
+<p>Suppose you have 10 light bulbs, 10 light switches that correspond to each light bulb, and 10 people.</p>
+
+<p>The light bulbs all begin turned off. Person 1 flips the switch on every light bulb. Person 2 flips the switch on every other light bulb. Person 3 flips the switch on every 3rd light bulb. This pattern continues until Person 10. Which light bulbs will be left on by the end?</p>
+
+<p><strong>Challenge</strong>: What light bulbs would be left on by the end if we extended the pattern to 100 light bulbs and 100 people?</p>
+
+<p><strong>Answer</strong>: <a href="https://puzzling.stackexchange.com/questions/5049/nerds-jocks-and-lockers">Puzzling StackExchange</a></p>
+
+<p>By the end of this course, you will be able to write a Python program that can verify the answer to this puzzle automatically!</p>
+<script>
+    $('.alwaystoggle').css('display', 'inline-block');
+    $('.alwaystoggle').click(function() {
+      var solution_id = $(this).attr('id');
+      $('div.' + solution_id).slideToggle(600);
+    });
+</script>
+
+  </div>
+
+  <div class='col-md-3 sticky'>
+    <nav class='hidden-print hidden-sm hidden-xs sidebar'>
+      <ul>
+  <li><a href="#part-0-introductions-5-minutes">Part 0: Introductions [5 minutes]</a></li>
+  <li><a href="#part-1-counting-10-minutes">Part 1: Counting [10 minutes]</a></li>
+  <li><a href="#part-2-light-switches-10-minutes">Part 2: Light switches [10 minutes]</a></li>
+</ul>
+    </nav>
   </div>
 </div>
 
@@ -199,6 +262,7 @@
     </footer> -->
 
     
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.20.0/min/vs/loader.min.js"></script>
   <link rel="stylesheet" data-name="vs/editor/editor.main" href="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.20.0/min/vs/editor/editor.main.min.css">
   <script>
@@ -219,5 +283,40 @@
     <script src="/sp25/assets/js/copy-button.js"></script>
     <script src="/sp25/assets/js/env-diagram.js"></script>
     
+<!-- <script src="/assets/js/sketchy.js"></script> -->
+<script>
+  $('.sidebar ul').addClass('nav nav-stacked noselect');
+  $('body').scrollspy({
+    target: '.sidebar',
+    offset: 40
+  });
+
+  function goToId(id) {
+    var target = $(id);
+    target.parent().show();
+    $('html,body').animate({
+      scrollTop: target.offset().top,
+    }, 100);
+    $("body").scrollspy('refresh');
+  }
+
+  if (location.hash) {
+    setTimeout(function() {
+      if (location.hash) {
+        goToId(location.hash);
+      }
+    }, 1);
+  }
+
+  $("a").click(function(event) {
+    var urlBeforeHashRegEx = new RegExp("^"+window.location.href.split("#")[0]);
+    if (/^#/.test(this.hash) && urlBeforeHashRegEx.test(this.href)) {
+      event.preventDefault();
+      goToId(this.hash);
+      document.location.hash = this.hash;
+    }
+  });
+</script>
+
   </body>
 </html>

@@ -157,7 +157,11 @@
         <h2 class="frontpage-header">Announcements: Monday, February 3</h2>
         <!-- <div><a href="#calendar_2_03">Jump to date</a></div> -->
         <ul>
-  <li>Homework and project due dates may change. However, <strong>exam dates are set!</strong>.</li>
+  <li><p>Reminder: Add/Drop deadline is this week!</p>
+
+  <ul>
+    <li>Please contact the ds-enrollment team if you need any help.</li>
+  </ul></li>
   <li>Section 115 (Fri 10am-12pm) is now open for enrollment.</li>
   <li><a href="https://go.c88c.org/join-ed">Join Ed</a> if you don't have access.</li>
 </ul>
@@ -166,6 +170,20 @@
     
 
     <div class="announcement" id='announcement-1' >
+        <button class="btn prev" style="color: black"><span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span> older</button>
+        <button class="btn next" style="color: black"><span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span> newer</button>
+        <h2 class="frontpage-header">Announcements: Monday, February 3</h2>
+        <!-- <div><a href="#calendar_2_03">Jump to date</a></div> -->
+        <ul>
+  <li>Homework and project due dates may change. However, <strong>exam dates are set!</strong>.</li>
+  <li>Section 115 (Fri 10am-12pm) is now open for enrollment.</li>
+  <li><a href="https://go.c88c.org/join-ed">Join Ed</a> if you don't have access.</li>
+</ul>
+        
+    </div>
+    
+
+    <div class="announcement" id='announcement-2' >
         <button class="btn prev" style="color: black"><span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span> older</button>
         <button class="btn next" style="color: black"><span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span> newer</button>
         <h2 class="frontpage-header">Announcements: Monday, January 27</h2>
@@ -181,7 +199,7 @@
     </div>
     
 
-    <div class="announcement" id='announcement-2' >
+    <div class="announcement" id='announcement-3' >
         <button class="btn prev" style="color: black"><span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span> older</button>
         <button class="btn next" style="color: black"><span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span> newer</button>
         <h2 class="frontpage-header">Announcements: Monday, January 20</h2>
@@ -331,12 +349,16 @@
 </td>
 <td>
 <span class="">
-<a href="/sp25/hw/hw01/">HW 01: Functions</a>
+<a href="/sp25/hw/hw01/" class="assignment-text">HW 01: Functions</a>
 <div class="badge due">
   Due
   Wed 2/5
 </div>
 
+
+<ul class="list-inline">
+  <li><a href="/sp25/hw/sol-hw01/" class="label label-outline">Solutions</a></li>
+</ul>
 
 </span>
 </td>
@@ -458,6 +480,8 @@
 
 <ul class="list-inline">
   <li><a href="https://www.youtube.com/watch?v=PKlgS5eofNY&list=PL6BsET-8jgYVSwKGjsM9y1j8RQsRwtDy3&ab_channel=JohnDeNero" class="label label-outline" target="_blank">Videos</a></li>
+<li><a href="/sp25/assets/slides/06-Functional_Abstraction_1pp.pdf" class="label label-outline">Slides (1pp)</a></li>
+<li><a href="/sp25/assets/slides/06.py" class="label label-outline">06.py</a></li>
 </ul>
 </td>
 <td>
@@ -467,12 +491,16 @@
 </td>
 <td>
 <span class="">
-Lab 03: Higher-Order Functions
+<a href="/sp25/lab/lab03/">Lab 03: Higher-Order Functions</a>
 <div class="badge due">
   Due
   Fri 2/14
 </div>
 
+
+<ul class="list-inline">
+  <li><a href="https://docs.google.com/presentation/d/1B4iyaLfkPVBAJNK8BT0RbxfckIb8gaVMoEtvngj5mjQ/edit?usp=sharing" class="label label-outline" target="_blank">Slides</a></li>
+</ul>
 
 </span>
 </td>
@@ -1379,7 +1407,7 @@ HW 11: Finale
 <script>
 $(document).ready(function() {
   // Assignment quick list
-  var assignments = [{"due": "2/7/25", "link": "lab/lab02/", "name": "Lab 02: Control", "piazza_name": "Lab 02", "release": "2/3/25"}, {"due": "2/12/25", "link": "hw/hw02/", "name": "HW 02: Control", "piazza_name": "HW 02", "release": "2/4/25"}];
+  var assignments = [{"due": "2/12/25", "link": "hw/hw02/", "name": "HW 02: Control", "piazza_name": "HW 02", "release": "2/4/25"}, {"due": "2/14/25", "link": "lab/lab03/", "name": "Lab 03: Higher-Order Functions", "piazza_name": "Lab 03", "release": "2/10/25"}];
 
   $(document).ready(function() {
     assignments.forEach(function(assignment) {
@@ -1427,7 +1455,7 @@ $(document).ready(function() {
 
  });
 
- let build_time = new Date(1000 * 1738883158.183696);
+ let build_time = new Date(1000 * 1739223956.453794);
  </script>
  <script>
   $('.alwaystoggle').css('display', 'inline-block');

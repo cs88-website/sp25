@@ -24,11 +24,13 @@ def repeats(n, dice):
     count = 0
     previous = None
     while n:
+        # print(f'Prev-before: {previous}')
         outcome = dice()
-        print(outcome)
+        # print(f'Outcome: {outcome}')
         if previous == outcome:
             count += 1
         previous = outcome
+        # print(f'Prev-after: {previous}')
         n -= 1
     return count
 

@@ -6,13 +6,16 @@ def countdown(n):
     else:
        print(n)
        countdown(n-1)
+       # ....
+    return None
 
-# def countdown(n):
-#     if n == 0:
-#         print('Blastoff!')
-#     else:
-#        countdown(n-1)
-#        print(n)
+def countdown(n):
+    if n == 0:
+        print('Blastoff!')
+    else:
+       countdown(n-1)
+       print(n)
+
 
 def countdown_print(n):
     print(f'Before: {n}')

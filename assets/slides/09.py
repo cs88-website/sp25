@@ -3,6 +3,28 @@ text = "Hello, C88C!"
 # for letter in text:
 #     print(letter)
 
+def sum_to_n_while(n):
+    """
+    """
+    total = 0
+    while n > 0:
+        total += n
+        n -= 1
+    return total
+
+def sum_to_n_while_up(stop):
+    """
+    sum_to_n_while_up(10)
+    55
+    """
+    total = 0
+    n = 0
+    while n <= stop:
+        total += n
+        n += 1
+    return total
+
+
 def sum_to_n(n):
     total = 0
     for num in range(0, n + 1):
@@ -23,7 +45,7 @@ def sum_to_n(n):
 text = 'Hello, C88C!'
 len(text)
 text.count('l')
-text.count(8)
+# text.count(8)
 text.count('8')
 
 courses = ['DATA C88C', 'DATA 8', 'POLSCI 2', 'MATH 54']

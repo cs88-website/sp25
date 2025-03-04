@@ -9,7 +9,6 @@
         "tests/*.py": "ok_test"
     },
     "default_tests": [
-        "list-mutation",
         "insert_items",
         "group_by",
         "partial_reverse"

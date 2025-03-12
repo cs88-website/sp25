@@ -28,7 +28,7 @@ class Flower:
         """
         if self.name not in self.bee_visits:
             self.bee_visits[self.name] = []
-        if bee_name not in self[self.name].bee_visits:
+        if bee_name not in self.bee_visits[self.name]:
             self.bee_visits[self.name].append(bee_name)
 
 def demos():

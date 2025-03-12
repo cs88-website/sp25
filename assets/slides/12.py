@@ -29,6 +29,12 @@ class Account:
         self.balance = self.balance - amount
         return self.balance
 
+    def __str__(self):
+        return f"{self.holder}'s account with ${self.balance}"
+
+    def __repr__(self):
+        return f"<Account-{self.holder} balance: {self.balance}>"
+
 def transfer(out_of, into, amount):
     """Transfer amount between two accounts.
 
@@ -109,8 +115,6 @@ class B(A):
 
 class Bear:
     """A Bear.
-
-
     >>> oski = Bear()
     >>> oski
     Bear()

@@ -6,7 +6,11 @@ class Flower:
         self.name = name
         self.num_petals = num_petals
         self.color = color
+        # next two lines are the same.
+        # Flower.all_flowers.append(self)
+        print(f'before: all flowers: {self.all_flowers}')
         self.all_flowers.append(self)
+        print(f'after: all flowers: {self.all_flowers}')
         # self.bee_visits = []
 
     def describe(self):
@@ -101,6 +105,11 @@ class Beach:
         self.wave = lambda y: self.dig(x) + self.dig(y)
         return self
 
+
+# a = Account('C88C')
+# b = Account('CS61A')
+# c = Account('CS61B')
+
 class Account:
     """An account has a balance and a holder.
     All accounts share a common interest rate.
@@ -122,14 +131,17 @@ class Account:
     0.02
     """
     interest = 0.02
-    # all_accounts = []
+    all_accounts = []
 
     def __init__(self, account_holder):
         self.holder = account_holder
         self.balance = 0
-        # self.all_accounts.append(self)
+        self.all_accounts.append(self)
         # Account.all_accounts.append(self)
         # all_accounts.append(self)
+
+    def inspect_interest(self):
+        print(f'Self.interest is {self.interest} --- Account.interest is {Account.interest}')
 
     def deposit(self, amount):
         """Add amount to balance."""

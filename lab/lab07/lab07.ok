@@ -2,13 +2,11 @@
     "name": "Lab 7",
     "endpoint": "cal/cs88/sp25/lab07",
     "src": [
-        "lab07.py",
-        "classes.py"
+        "lab07.py"
     ],
     "tests": {
         "lab*.py": "doctest",
-        "tests/*.py": "ok_test",
-        "classes.py": "doctest"
+        "tests/*.py": "ok_test"
     },
     "default_tests": [
         "BankAccount",

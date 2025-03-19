@@ -78,7 +78,7 @@ class Artist(User):
         self.albums = []
 
 class Song:
-    def __init__(self, name, artist):
+    def __init__(self, name, artist, length):
         """
         >>> taylor = Artist('Taylor Swift')
         >>> all_too_well = Song('All Too Well', taylor)

@@ -23,7 +23,11 @@ class Link:
         else:
             rest_repr = ''
         return 'Link(' + repr(self.first) + rest_repr + ')'
+<<<<<<< HEAD
+        
+=======
 
+>>>>>>> c091d654b5a59938165b3f61fc0ee3f9da74ec61
     def __str__(self):
         string = '<'
         while self.rest is not Link.empty:

@@ -1,4 +1,3 @@
-
 class Link:
     """A linked list.
 
@@ -97,10 +96,12 @@ def longest_song(album):
         return album.first
 
     rest_longest = longest_song(album.rest)
-    if album.first.length > rest_longest.length:
-        return album.first
-    else:
-        return rest_longest
+    # Two options:
+    return max(album.first, rest_longest, key = lambda s: s.length)
+    # if album.first.length > rest_longest.length:
+    #     return album.first
+    # else:
+    #     return rest_longest
 
 def nested_link():
     """
@@ -253,8 +254,8 @@ class Bank:
         }
 
 #berkeley = Bank('UC Berkeley')
-#cs88 = berkeley.new_account('CS88', 1000, CheckingAccount)
-#cs61a = berkeley.new_account('CS61A', 1, SavingsAccount)
+cs88 = berkeley.new_account('CS88', 1000, CheckingAccount)
+cs61a = berkeley.new_account('CS61A', 1, SavingsAccount)
 
 #berkeley.new_account('CS88 Retirement', 1000, RetirementSavingsAccount)
 

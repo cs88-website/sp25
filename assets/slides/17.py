@@ -1,5 +1,4 @@
 # Iterators
-
 def iterator_demos():
     """Using iterators
 
@@ -105,3 +104,4 @@ class rangehof:
             return current
         else:
             raise StopIteration()
+

@@ -50,9 +50,48 @@ def increment_leaves(t):
         branches = [increment_leaves(b) for b in t.branches]
         return Tree(t.label, branches)
 
+def increment_leaves_in_place(t):
+    """Return a tree like t but with leaf labels incremented."""
+    if t.is_leaf():
+        t.label = t.label + 1
+    else:
+        for b in t.branches:
+            increment_leaves_in_place(b)
+
+
 def increment(t):
     """Return a tree like t but with all labels incremented."""
     return Tree(t.label + 1, [increment(b) for b in t.branches])
+
+def print_tree(t, indent=0):
+    """Print a representation of this tree in which each label is
+    indented by two spaces times its depth from the root.
+
+    >>> print_tree(tree(1))
+    1
+    >>> print_tree(tree(1, [tree(2)]))
+    1
+      2
+    >>> print_tree(fib_tree(4))
+    3
+      1
+        0
+        1
+      2
+        1
+        1
+          0
+          1
+    """
+    # print(f"Deptrh? {indent}")
+    print(f"{'     ' * indent}{t.value}")
+
+    for b in t.branches:
+        print_tree(b, indent + 1)
+
+def count_nodes(t):
+    """The number of leaves in tree."""
+    return 1 + sum(map(count_nodes, t.branches))
 
 def count_paths(t, total):
     """Return the number of paths from the root to any node in tree t

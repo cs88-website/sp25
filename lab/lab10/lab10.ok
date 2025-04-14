@@ -8,10 +8,7 @@
         "lab*.py": "doctest",
         "tests/*.py": "ok_test"
     },
-    "default_tests": [
-        "big",
-        "growing"
-    ],
+    "default_tests": [],
     "protocols": [
         "restore",
         "file_contents",

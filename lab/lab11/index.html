@@ -426,7 +426,7 @@ wanted to count the number of flights from our <code>flights</code> table, we co
 <p>What if we wanted to group together the values in similar rows and perform the
 aggregation operations within those groups? We use a <code>GROUP BY</code> clause.</p>
 
-<p>Here's another example. For each unique departure, collect all the rows having
+<p>Here's another example. For each unique departure, collect all of the rows having
 the same departure airport into a group. Then, select the <code>price</code> column and
 apply the <code>MIN</code> aggregation to recover the price of the cheapest departure from
 that group. The end result is a table of departure airports and the cheapest

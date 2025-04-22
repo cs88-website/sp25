@@ -1,0 +1,680 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta name="description" content ="Data C88C: Computational Structures in Data Science" />
+    <meta name="keywords" content ="Computer Science, Programming, Berkeley, EECS" />
+    <meta name="author" content ="Michael Ball" />
+    <!-- CHANGED CAREFUL -->
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="width=device-width">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-throttle-debounce/1.1/jquery.ba-throttle-debounce.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="/sp25/assets/js/hl.js"></script>
+    <script src="/sp25/assets/js/toggledarkmode.js"></script>
+    <script>
+        // we aren't registering builtins since
+        //      (1) they don't render differently in the current CSS from other names
+        //      (2) it's a mess to list all of them. You can extract from the site but that takes effort
+        // if (1) ceases to be true, (2) might be worth the effort. For now, we're leaving as is
+        hljsRegister({
+            'keyword': "define if cond and or let begin lambda mu quote delay cons-stream set! quasiquote unquote unquote-splicing define-macro"
+        });
+        hljs.initHighlightingOnLoad();
+    </script>
+    <script src="/sp25/assets/js/dark-mode.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inconsolata|Roboto:300,400,500|Work+Sans:400,700">
+    <link rel="stylesheet" href="/sp25/assets/css/style.css">
+    <link rel="stylesheet" href="/sp25/assets/css/mono-blue.css">
+    <link rel="icon" href="/sp25/assets/images/favicon.ico">
+
+    
+
+<link rel="stylesheet" type="text/css" href="/assets/css/disc.css">
+
+
+    <title>
+Discussion 11 | Data C88C Spring 2025
+</title>
+  </head>
+
+  <body id="index" class="home">
+    <nav class="navbar navbar-default navbar-static-top">
+      <div class="container noselect">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-section" aria-label="Toggle Navigation Bar">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/sp25/">
+            Data C88C
+            <!-- <img style="max-width:60px; margin-top: -20px;" class="logo" src="/assets/images/logo.png"/> -->
+          </a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="navbar-collapse-section">
+          <ul class="nav navbar-nav navbar-right">
+
+            
+            <li><a href="/sp25/">Schedule</a></li>
+            
+            <li><a href="/sp25/articles/about-c88c/">Syllabus</a></li>
+            
+            <li><a href="https://edstem.org/us/courses/74610/discussion/">Ed</a></li>
+            
+            <li><a href="/sp25/office-hours/">Google Calendar</a></li>
+            
+            <li><a href="/sp25/articles/contact-c88c/">Contact</a></li>
+            
+
+            
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Links
+                <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                
+                <li><a href="https://go.c88c.org/here">Lab Attendance Form</a></li>
+                
+                <li><a href="https://go.c88c.org/extensions">Request an Extension</a></li>
+                
+                <li><a href="https://oh.c88c.org/">Office Hours Queue</a></li>
+                
+                <li><a href="https://sections.c88c.org">Tutoring Sections Sign Up</a></li>
+                
+                <li><a href="https://www.gradescope.com/courses/961665">Gradescope</a></li>
+                
+                <li><a href="https://bcourses.berkeley.edu/courses/1543079/external_tools/90481">Lecture Recordings</a></li>
+                
+                <li><a href="https://pythontutor.com/cp/composingprograms.html">Python Tutor</a></li>
+                
+                <li><a href="https://bcourses.berkeley.edu/courses/1543079/">bCourses</a></li>
+                
+              </ul>
+            </li>
+            
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Resources
+                <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                
+                <li><a href="/sp25/resources/">Past Exams & Websites</a></li>
+                
+                <li><a href="https://www.composingprograms.com">Textbook</a></li>
+                
+                <li><a href="https://drive.google.com/file/d/1O72u0ml65pibcjz-PXKpqeJDKaVqQ3D8/view">Debugging Guide</a></li>
+                
+                <li><a href="/sp25/articles/studying/">Studying Guide</a></li>
+                
+                <li><a href="/sp25/articles/composition/">Composition Guide</a></li>
+                
+                <li><a href="/sp25/articles/campus-res/">Campus Resources</a></li>
+                
+              </ul>
+            </li>
+            
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Staff
+                <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                
+                <li><a href="/sp25/instructor">Instructors</a></li>
+                
+                <li><a href="/sp25/staff">TAs & Tutors</a></li>
+                
+              </ul>
+            </li>
+            
+
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <main id="content" class="container">
+      
+<div class='row'>
+  <div class='col-md-9'>
+    <header>
+      <h1>
+        
+Discussion 11: More SQL
+
+        
+        
+        <ul class="inline-block list-inline">
+          <li><a href="disc11.pdf" class="label label-outline">disc11.pdf</a></li>
+        </ul>
+        
+        
+      </h1>
+    </header>
+    
+
+<!-- <div class="alert storable-login-status"></div> -->
+
+
+    
+<h1 id="more-sql">More SQL</h1>
+
+
+<p>After you finish your Thanksgiving dinner, you realize that you still
+need to buy gifts for all your loved ones over the holidays. However, you also
+want to spend as little money as possible (you're not cheap, just looking for a
+great sale!).</p>
+
+<p>This question utilizes the following tables:</p>
+
+<p style="text-align: left;"><b>products</b></p>
+
+
+
+        <div class="table-responsive">
+          <table class="table table-bordered">
+          
+  <tr>
+    <th>category</th>
+    <th>name</th>
+    <th>MSRP</th>
+    <th>rating</th>
+  </tr>
+  <tr>
+    <td>phone</td>
+    <td>uPhone</td>
+    <td>99.99</td>
+    <td>4.5</td>
+  </tr>
+  <tr>
+    <td>...</td>
+    <td>...</td>
+    <td>...</td>
+    <td>...</td>
+  </tr>
+  <tr>
+    <td>computer</td>
+    <td>kBook</td>
+    <td>99.99</td>
+    <td>3.8</td>
+  </tr>
+
+          </table>
+        </div>
+        
+
+
+
+<p style="text-align: left;"><b>inventory</b></p>
+
+
+
+        <div class="table-responsive">
+          <table class="table table-bordered">
+          
+  <tr>
+    <th>store</th>
+    <th>item</th>
+    <th>price</th>
+  </tr>
+  <tr>
+    <td>Hallmart</td>
+    <td>uPhone</td>
+    <td>99.99</td>
+  </tr>
+  <tr>
+    <td>Targive</td>
+    <td>uPhone</td>
+    <td>100.99</td>
+  </tr>
+  <tr>
+    <td>RestBuy</td>
+    <td>uPhone</td>
+    <td>89.99</td>
+  </tr>
+  <tr>
+    <td>...</td>
+    <td>...</td>
+    <td>...</td>
+  </tr>
+  <tr>
+    <td>RestBuy</td>
+    <td>kBook</td>
+    <td>94.99</td>
+  </tr>
+
+          </table>
+        </div>
+        
+
+
+
+<p style="text-align: left;"><b>stores</b></p>
+
+
+
+        <div class="table-responsive">
+          <table class="table table-bordered">
+          
+  <tr>
+    <th>store</th>
+    <th>address</th>
+    <th>Mbs</th>
+  </tr>
+  <tr>
+    <td>Hallmart</td>
+    <td>50 Lawton Way</td>
+    <td>25</td>
+  </tr>
+  <tr>
+    <td>Targive</td>
+    <td>2 Red Circle Way</td>
+    <td>40</td>
+  </tr>
+  <tr>
+    <td>RestBuy</td>
+    <td>1 Kiosk Ave</td>
+    <td>30</td>
+  </tr>
+
+          </table>
+        </div>
+        
+
+
+
+<div class="page-break"></div>
+
+
+<h3 id="q1-price-check">Q1: Price Check</h3>
+
+
+<p>Let's start off by surveying our options. Using the <code>products</code> table, write a
+query that creates a table <code>average_prices</code> that lists categories and the
+average price of items in the category
+(using <a href="https://en.wikipedia.org/wiki/List_price">MSRP</a> as the price).</p>
+
+<p>You should get the following output:</p>
+
+<pre><code>computer|109.0
+games|350.0
+phone|90.0</code></pre>
+
+
+
+
+            
+            <b>Your Answer</b>
+            
+            <div class="monaco-storable" id="question-1 lang=sql-input" style="height:90px;"></div>
+            <a href="javascript:void" id="modal-link-question-1 lang=sql-input">Run in 61A Code</a>
+            <div class="modal fade" id="modal-question-1 lang=sql-input" tabindex="-1" role="dialog">
+                <div class="modal-dialog modal-lg" role="document">
+                    <div class="modal-content" style="padding-bottom: -5px">
+                    <iframe
+                        id="code-iframe-question-1 lang=sql-input"
+                        width="100%"
+                        height="700px"
+                        style="border: none; display:block;"
+                    ></iframe>
+                    </div>
+                </div>
+            </div>
+            <div class="storable-status"></div>
+            <script>
+                $(() => activateEditor('SELECT &quot;YOUR CODE HERE&quot;\n\n\n', "scheme", "question-1 lang=sql-input"));
+            </script>
+        
+            <div class="sol-highlight">
+                <b>Solution</b>
+                
+<pre><code>SELECT category as category, AVG(msrp) as average_price FROM products GROUP BY category; OR
+SELECT category, SUM(msrp)/COUNT(*) FROM products GROUP BY category;
+</code></pre>
+
+
+            </div>
+        
+
+
+<h3 id="q2-status-of-inventory">Q2: Status of Inventory</h3>
+
+
+<p>We want to see which products are listed in the inventory of any store. Create a table <code>inventory_by_store</code>, which lists every product's name and msrp. If the product is available in a store, also include the store name and the price it is sold for. Otherwise, if a product is not in an inventory, the store and price columns will have a NULL value.</p>
+
+<p>Here's a partial table of the output:</p>
+
+<pre><code>uPhone|99.99|Hallmart|99.99
+uPhone|99.99|Targive|100.99
+kBook|99.99|RestBuy|94.99
+OtherProduct|149.99|NULL|NULL</code></pre>
+
+
+
+
+            
+            <b>Your Answer</b>
+            
+            <div class="monaco-storable" id="question-5 lang=sql-input" style="height:90px;"></div>
+            <a href="javascript:void" id="modal-link-question-5 lang=sql-input">Run in 61A Code</a>
+            <div class="modal fade" id="modal-question-5 lang=sql-input" tabindex="-1" role="dialog">
+                <div class="modal-dialog modal-lg" role="document">
+                    <div class="modal-content" style="padding-bottom: -5px">
+                    <iframe
+                        id="code-iframe-question-5 lang=sql-input"
+                        width="100%"
+                        height="700px"
+                        style="border: none; display:block;"
+                    ></iframe>
+                    </div>
+                </div>
+            </div>
+            <div class="storable-status"></div>
+            <script>
+                $(() => activateEditor('SELECT &quot;YOUR CODE HERE&quot;\n\n\n', "scheme", "question-5 lang=sql-input"));
+            </script>
+        
+            <div class="sol-highlight">
+                <b>Solution</b>
+                
+<pre><code>SELECT p.name, p.msrp, i.store, i.price FROM products p
+LEFT JOIN inventory i ON p.name = i.item;
+</code></pre>
+
+
+            </div>
+        
+
+<div class="page-break"></div>
+
+
+<h3 id="q3-the-price-is-right">Q3: The Price is Right</h3>
+
+
+<p>Now, you want to figure out which stores sell each item in products for the
+lowest price. Write a SQL query that uses the <code>inventory</code> table to create a
+table <code>lowest_prices</code> that lists items, the stores that sells that item for the
+lowest price, and the price that the store sells that item for.</p>
+
+<p>You should expect the following output:</p>
+
+<pre><code>Hallmart|GameStation|298.98
+Targive|QBox|390.98
+Targive|iBook|110.99
+RestBuy|kBook|94.99
+Hallmart|qPhone|85.99
+Hallmart|rPhone|69.99
+RestBuy|uPhone|89.99
+RestBuy|wBook|114.29</code></pre>
+
+
+
+
+            
+            <b>Your Answer</b>
+            
+            <div class="monaco-storable" id="question-2 lang=sql-input" style="height:90px;"></div>
+            <a href="javascript:void" id="modal-link-question-2 lang=sql-input">Run in 61A Code</a>
+            <div class="modal fade" id="modal-question-2 lang=sql-input" tabindex="-1" role="dialog">
+                <div class="modal-dialog modal-lg" role="document">
+                    <div class="modal-content" style="padding-bottom: -5px">
+                    <iframe
+                        id="code-iframe-question-2 lang=sql-input"
+                        width="100%"
+                        height="700px"
+                        style="border: none; display:block;"
+                    ></iframe>
+                    </div>
+                </div>
+            </div>
+            <div class="storable-status"></div>
+            <script>
+                $(() => activateEditor('SELECT &quot;YOUR CODE HERE&quot;\n\n\n', "scheme", "question-2 lang=sql-input"));
+            </script>
+        
+            <div class="sol-highlight">
+                <b>Solution</b>
+                
+<pre><code>SELECT store, item, MIN(price) FROM inventory GROUP BY item; OR
+SELECT * FROM inventory GROUP BY item HAVING MIN(price);
+</code></pre>
+
+
+            </div>
+        
+
+
+<h3 id="q4-bang-for-your-buck">Q4: Bang for your Buck</h3>
+
+
+<p>You want to make a shopping list by choosing the item that is the best deal
+possible for every category. For example, for the "phone" category, the uPhone
+is the best deal because the MSRP price of a uPhone divided by its ratings
+yields the lowest cost. That means that uPhones cost the lowest money per rating
+point out of all of the phones. Note that the item with the lowest MSRP price may not
+necessarily be the best deal.</p>
+
+<p>Write a query to create a table <code>shopping_list</code> that lists the items that you
+want to buy from each category.</p>
+
+<p>After you've figured out which item you want to buy for each category, add
+another column that lists the store that sells that item for the lowest price.</p>
+
+<p>You should expect the following output:</p>
+
+<pre><code>GameStation|Hallmart
+uPhone|RestBuy
+wBook|RestBuy</code></pre>
+
+
+
+
+            
+            <b>Your Answer</b>
+            
+            <div class="monaco-storable" id="question-3 lang=sql-input" style="height:90px;"></div>
+            <a href="javascript:void" id="modal-link-question-3 lang=sql-input">Run in 61A Code</a>
+            <div class="modal fade" id="modal-question-3 lang=sql-input" tabindex="-1" role="dialog">
+                <div class="modal-dialog modal-lg" role="document">
+                    <div class="modal-content" style="padding-bottom: -5px">
+                    <iframe
+                        id="code-iframe-question-3 lang=sql-input"
+                        width="100%"
+                        height="700px"
+                        style="border: none; display:block;"
+                    ></iframe>
+                    </div>
+                </div>
+            </div>
+            <div class="storable-status"></div>
+            <script>
+                $(() => activateEditor('SELECT &quot;YOUR CODE HERE&quot;\n\n\n', "scheme", "question-3 lang=sql-input"));
+            </script>
+        
+            <div class="sol-highlight">
+                <b>Solution</b>
+                
+<pre><code>SELECT name, store FROM products AS p, lowest_prices AS l
+WHERE l.item = p.name
+GROUP BY category HAVING MIN(MSRP/rating);
+</code></pre>
+
+
+            </div>
+        
+
+<div class="page-break"></div>
+
+
+<h3 id="q5-driving-the-cyber-highways">Q5: Driving the Cyber Highways</h3>
+
+
+<p>Using the Mbs (megabits) column from the <code>stores</code> table, write a query to
+calculate the total amount of bandwidth needed to get everything in your
+shopping list.</p>
+
+
+            
+            <b>Your Answer</b>
+            
+            <div class="monaco-storable" id="question-4 lang=sql-input" style="height:90px;"></div>
+            <a href="javascript:void" id="modal-link-question-4 lang=sql-input">Run in 61A Code</a>
+            <div class="modal fade" id="modal-question-4 lang=sql-input" tabindex="-1" role="dialog">
+                <div class="modal-dialog modal-lg" role="document">
+                    <div class="modal-content" style="padding-bottom: -5px">
+                    <iframe
+                        id="code-iframe-question-4 lang=sql-input"
+                        width="100%"
+                        height="700px"
+                        style="border: none; display:block;"
+                    ></iframe>
+                    </div>
+                </div>
+            </div>
+            <div class="storable-status"></div>
+            <script>
+                $(() => activateEditor('SELECT &quot;YOUR CODE HERE&quot;\n\n\n', "scheme", "question-4 lang=sql-input"));
+            </script>
+        
+            <div class="sol-highlight">
+                <b>Solution</b>
+                
+<pre><code>SELECT SUM(s.mbs) FROM stores AS s, shopping_list AS sl WHERE s.store = sl.store;
+</code></pre>
+
+
+            </div>
+        
+
+<div class="page-break"></div>
+
+
+<h1 id="document-the-occasion">Document the Occasion</h1>
+
+
+<p>Please all fill out the <a href="https://go.c88c.org/here">attendance form</a> (one submission per person per week).</p>
+<script>
+    $('.alwaystoggle').css('display', 'inline-block');
+    $('.alwaystoggle').click(function() {
+      var solution_id = $(this).attr('id');
+      $('div.' + solution_id).slideToggle(600);
+    });
+</script>
+
+  </div>
+
+  <div class='col-md-3 sticky'>
+    <nav class='hidden-print hidden-sm hidden-xs sidebar'>
+      <ul>
+  <li><a href="#more-sql">More SQL</a></li>
+  <ul>
+    <li><a href="#q1-price-check">Q1: Price Check</a></li>
+    <li><a href="#q2-status-of-inventory">Q2: Status of Inventory</a></li>
+    <li><a href="#q3-the-price-is-right">Q3: The Price is Right</a></li>
+    <li><a href="#q4-bang-for-your-buck">Q4: Bang for your Buck</a></li>
+    <li><a href="#q5-driving-the-cyber-highways">Q5: Driving the Cyber Highways</a></li>
+  </ul>
+  <li><a href="#document-the-occasion">Document the Occasion</a></li>
+</ul>
+    </nav>
+  </div>
+</div>
+
+    </main>
+
+    <!-- <footer class="container">
+      <div class="row text-center">
+        <div class="col col-sm-4">
+          <h3><a href="/">CS 61A</a></h3>
+          <ul class="nav nav-pills nav-stacked">
+            <li><a href="/weekly">Weekly Schedule</a></li>
+            <li><a href="/office-hours">Office Hours</a></li>
+            <li><a href="/staff">Staff</a></li>
+          </ul>
+        </div>
+        <div class="col col-sm-4">
+          <h3><a href="/resources">Resources</a></h3>
+          <ul class="nav nav-pills nav-stacked">
+            <li><a href="/articles/studying">Studying Guide</a></li>
+            <li><a href="/articles/debugging">Debugging Guide</a></li>
+            <li><a href="/articles/composition">Composition Guide</a></li>
+            <li><a href="/articles/pair-programming">Pair Programming</a></li>
+          </ul>
+        </div>
+        <div class="col col-sm-4">
+          <h3><a href="/articles/about">Policies</a></h3>
+          <ul class="nav nav-pills nav-stacked">
+            <li><a href="/articles/about#assignments">Assignments</a></li>
+            <li><a href="/articles/about#exams">Exams</a></li>
+            <li><a href="/articles/about#grading">Grading</a></li>
+          </ul>
+        </div>
+      </div>
+    </footer> -->
+
+    
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.20.0/min/vs/loader.min.js"></script>
+  <link rel="stylesheet" data-name="vs/editor/editor.main" href="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.20.0/min/vs/editor/editor.main.min.css">
+  <script>
+      require.config({ paths: { 'vs': 'https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.20.0/min/vs' }});
+      window.MonacoEnvironment = { getWorkerUrl: () => URL.createObjectURL(new Blob([`
+      self.MonacoEnvironment = {
+          baseUrl: 'https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.20.0/min'
+      };
+      importScripts('https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.20.0/min/vs/base/worker/workerMain.min.js');
+  `], { type: 'text/javascript' }))
+  };
+  </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jsPlumb/2.15.5/js/jsplumb.min.js"></script>
+    <script src="/sp25/assets/js/network_storage.js"></script>
+    <script src="/sp25/assets/js/code_tabindex.js"></script>
+    <script src="/sp25/assets/js/storable.js"></script>
+    <script src="/sp25/assets/js/editor.js"></script>
+    <script src="/sp25/assets/js/copy-button.js"></script>
+    <script src="/sp25/assets/js/env-diagram.js"></script>
+    
+<!-- <script src="/assets/js/sketchy.js"></script> -->
+<script>
+  $('.sidebar ul').addClass('nav nav-stacked noselect');
+  $('body').scrollspy({
+    target: '.sidebar',
+    offset: 40
+  });
+
+  function goToId(id) {
+    var target = $(id);
+    target.parent().show();
+    $('html,body').animate({
+      scrollTop: target.offset().top,
+    }, 100);
+    $("body").scrollspy('refresh');
+  }
+
+  if (location.hash) {
+    setTimeout(function() {
+      if (location.hash) {
+        goToId(location.hash);
+      }
+    }, 1);
+  }
+
+  $("a").click(function(event) {
+    var urlBeforeHashRegEx = new RegExp("^"+window.location.href.split("#")[0]);
+    if (/^#/.test(this.hash) && urlBeforeHashRegEx.test(this.href)) {
+      event.preventDefault();
+      goToId(this.hash);
+      document.location.hash = this.hash;
+    }
+  });
+</script>
+
+  </body>
+</html>

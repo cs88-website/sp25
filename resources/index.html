@@ -307,7 +307,9 @@ Archive
             <br><br><strong>For the final:</strong><br>
             Thanks CSM for the walkthroughs! <strong>Please note some typos in the exam and/or walkthrough videos below:</strong>
             <ul>
+            <li>For Q1g, the second answer option should be <code>["Odd", "Even", "Odd", "Even"]</code></li>
             <li>For Q3b, the solution should be "The code block errors and does not run." This is because Python disallows changing the size of a dictionary while iterating over it. Doing so will produce the error: <code>RuntimeError: dictionary changed size during iteration</code>.</li>
+            <li>For Q11a, the solution does not adhere to typical SQL variant behavior because we include columns in the <code>SELECT</code> statement that aren't in <code>GROUP BY</code> or in an aggregation. In other words, it doesn't really make sense to select the staff member's name, because multiple staff members have the same food order (for example, Angela, Jessica, and Rebecca all have a <code>food_order</code> value of <code>'rice'</code>). In many SQL variants such as Postgres, a query like the one in the staff solution would cause an error. However, SQLite will not error.</li>
             <li>For Q11b, the <code>JOIN</code> predicate should say <code>staff.food_order = players.food_order AND staff.fav_player = players.name</code>.</li>
             </ul>
             </td></tr>
